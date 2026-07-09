@@ -37,6 +37,14 @@ function App(){
   return(
     <div>
       <h1>Mis Películas Favoritas</h1>
+      <div>
+        <input type="text"
+      value = {nuevaPelicula}
+      onChange={(e) => setNuevaPelicula(e.target.value)}
+      style ={{flex: 1, padding: '8px'}} />
+
+      <button onClick={agregarPeliculas}>Agregar</button>
+      </div>
         {peliculas.map((pelicula, indice) => (
           <Peliculas key={indice} titulo={pelicula}/>
         ))}
