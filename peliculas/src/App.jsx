@@ -19,6 +19,7 @@ function Peliculas({titulo}){
   );
 }
 
+
 function App(){
 
   const [peliculas, setPeliculas] = useState(['Interestellar', 'Escape(2024)', 'Avengers: End Game', 'Spaceman'])
