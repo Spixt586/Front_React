@@ -1,0 +1,440 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Cinzel:wght@600&family=Cinzel+Decorative:wght@700&family=Orbitron:wght@700&family=Cormorant+Garamond:ital,wght@1,600&family=Bungee&family=Oswald:wght@700&family=Rye&family=Bangers&display=swap');
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-base: #0B0B12;
+    --bg-card: rgba(255, 255, 255, 0.035);
+    --border-soft: rgba(255, 255, 255, 0.08);
+
+    --nintendo: #E60012;
+    --playstation: #0070D1;
+    --xbox: #107C10;
+    --pc: #9D4EDD;
+
+    --text-primary: #F4F4FA;
+    --text-secondary: #8B8B9E;
+
+    --radius-lg: 24px;
+    --radius-md: 16px;
+    --radius-pill: 999px;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* ---------- Fondo animado (identidad de las 3 consolas) ---------- */
+.store-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 48px 24px;
+    background: var(--bg-base);
+    overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+}
+
+.aurora-blob {
+    position: absolute;
+    width: 480px;
+    height: 480px;
+    border-radius: 50%;
+    filter: blur(130px);
+    opacity: 0.28;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.aurora-blob--nintendo {
+    top: -160px;
+    left: -100px;
+    background: radial-gradient(circle, var(--nintendo), transparent 70%);
+    animation: drift-a 20s ease-in-out infinite;
+}
+
+.aurora-blob--playstation {
+    top: 30%;
+    right: -160px;
+    background: radial-gradient(circle, var(--playstation), transparent 70%);
+    animation: drift-b 26s ease-in-out infinite;
+}
+
+.aurora-blob--xbox {
+    bottom: -180px;
+    left: 30%;
+    background: radial-gradient(circle, var(--xbox), transparent 70%);
+    animation: drift-c 24s ease-in-out infinite;
+}
+
+@keyframes drift-a {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(70px, 50px) scale(1.15); }
+}
+@keyframes drift-b {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-60px, 60px) scale(1.1); }
+}
+@keyframes drift-c {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(40px, -50px) scale(1.12); }
+}
+
+/* ---------- Contenedor y header ---------- */
+.store-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1300px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.store-header {
+    margin-bottom: 28px;
+}
+
+.store-header h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: clamp(28px, 4vw, 40px);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: linear-gradient(90deg, var(--nintendo), var(--playstation) 50%, var(--xbox));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.store-header p {
+    margin: 4px 0 0;
+    color: var(--text-secondary);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+}
+
+/* ---------- Tabla como grilla de tarjetas (catálogo de tienda) ---------- */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.tabla-videojuegos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 22px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-videojuegos tbody {
+    display: contents;
+}
+
+.juego-card {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-lg);
+    padding: 18px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.juego-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--accent);
+}
+
+.juego-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 16px 40px -14px var(--accent);
+}
+
+/* Colores por plataforma */
+.plataforma-nintendo { --accent: var(--nintendo); }
+.plataforma-playstation { --accent: var(--playstation); }
+.plataforma-xbox { --accent: var(--xbox); }
+.plataforma-pc { --accent: var(--pc); }
+
+/* ---------- Orden y layout interno de cada tarjeta ---------- */
+.plataforma-badge {
+    order: 1;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.badge {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 15%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+.titulo {
+    order: 2;
+    width: 100%;
+    font-size: 20px;
+    line-height: 1.25;
+    margin-bottom: 10px;
+    min-height: 50px;
+}
+
+.genero {
+    order: 3;
+    width: 50%;
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.lanzamiento {
+    order: 4;
+    width: 50%;
+    text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--text-secondary);
+}
+
+.precio {
+    order: 5;
+    width: 50%;
+    font-size: 20px;
+    margin-top: 12px;
+}
+
+.disponible {
+    order: 6;
+    width: 50%;
+    text-align: right;
+    margin-top: 12px;
+}
+
+.stock {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.stock.en-stock {
+    color: #00FFA3;
+    background: rgba(0, 255, 163, 0.1);
+    border: 1px solid rgba(0, 255, 163, 0.35);
+}
+
+.stock.agotado {
+    color: #FF3B5C;
+    background: rgba(255, 59, 92, 0.1);
+    border: 1px solid rgba(255, 59, 92, 0.35);
+}
+
+/* ---------- Barra de progreso (color según plataforma) ---------- */
+.progreso {
+    order: 7;
+    width: 100%;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.barra-progreso {
+    flex: 1;
+    height: 8px;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+    border: none;
+}
+
+.barra-progreso::-webkit-progress-bar {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-pill);
+}
+
+.barra-progreso::-webkit-progress-value {
+    background: var(--accent);
+    border-radius: var(--radius-pill);
+    box-shadow: 0 0 10px var(--accent);
+    transition: width 0.3s ease;
+}
+
+.barra-progreso::-moz-progress-bar {
+    background: var(--accent);
+    border-radius: var(--radius-pill);
+    box-shadow: 0 0 10px var(--accent);
+}
+
+.progreso-texto {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    color: var(--text-secondary);
+    min-width: 34px;
+    text-align: right;
+}
+
+/* ---------- Acciones ---------- */
+.acciones {
+    order: 8;
+    width: 100%;
+    margin-top: 16px;
+}
+
+.acciones-group {
+    display: flex;
+    gap: 8px;
+}
+
+.btn {
+    flex: 1;
+    font-family: 'Inter', sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 9px 14px;
+    border-radius: var(--radius-pill);
+    border: 1px solid transparent;
+    cursor: pointer;
+    background: transparent;
+    transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn:active {
+    transform: scale(0.96);
+}
+
+.btn-editar {
+    color: var(--accent);
+    border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+}
+
+.btn-editar:hover {
+    background: color-mix(in srgb, var(--accent) 15%, transparent);
+    box-shadow: 0 0 14px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+.btn-eliminar {
+    color: #FF3B5C;
+    border-color: rgba(255, 59, 92, 0.4);
+}
+
+.btn-eliminar:hover {
+    background: rgba(255, 59, 92, 0.12);
+    box-shadow: 0 0 14px rgba(255, 59, 92, 0.35);
+}
+
+/* ---------- Tipografía por juego (título + precio) ---------- */
+.juego-zelda {
+    font-family: 'Cinzel', serif;
+    color: #FFD700;
+    text-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
+}
+
+.juego-eldenring {
+    font-family: 'Cinzel Decorative', serif;
+    color: #C9A876;
+    text-shadow: 0 0 10px rgba(201, 168, 118, 0.3);
+}
+
+.juego-cyberpunk {
+    font-family: 'Orbitron', sans-serif;
+    color: #FCEE0A;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-shadow: 2px 0 0 #FF003C, -2px 0 0 #00F0FF;
+}
+
+.juego-hollowknight {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 600;
+    color: #DCE8F5;
+    letter-spacing: 0.03em;
+}
+
+.juego-gta {
+    font-family: 'Bungee', cursive;
+    color: #39FF88;
+    text-shadow: 2px 2px 0 #FF2E9A;
+}
+
+.juego-monsterhunter {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    color: #FF7A1A;
+    letter-spacing: 0.03em;
+}
+
+.juego-rdr2 {
+    font-family: 'Rye', serif;
+    color: #D8B26E;
+}
+
+.juego-hades {
+    font-family: 'Cinzel Decorative', serif;
+    color: #FF4B3E;
+    text-shadow: 0 0 10px rgba(255, 75, 62, 0.35);
+}
+
+.juego-spiderman {
+    font-family: 'Bangers', cursive;
+    color: #E31B23;
+    letter-spacing: 0.02em;
+    -webkit-text-stroke: 0.5px #0D1B6B;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+    .store-page {
+        padding: 32px 16px;
+    }
+
+    .tabla-videojuegos {
+        grid-template-columns: 1fr;
+    }
+
+    .aurora-blob {
+        width: 320px;
+        height: 320px;
+        filter: blur(90px);
+    }
+}
+
+/* ---------- Accesibilidad ---------- */
+@media (prefers-reduced-motion: reduce) {
+    .aurora-blob {
+        animation: none;
+    }
+}

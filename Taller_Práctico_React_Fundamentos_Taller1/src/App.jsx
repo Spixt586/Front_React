@@ -7,7 +7,6 @@ function Peliculas({titulo}){
     <div style={{border: "1px solid gray", 
                 padding: "10px", 
                 margin: "5px", 
-                textDecoration: favorita ? "⭐": "",
                 cursor: 'pointer'
                 }}
                 
