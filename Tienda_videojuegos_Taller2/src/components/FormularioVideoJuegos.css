@@ -1,0 +1,309 @@
+/* ---------- Formulario: hereda tokens de TablaVideoJuegos.css ---------- */
+
+.form-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 48px 24px;
+    background: var(--bg-base);
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+}
+
+.form-card {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    width: 100%;
+    margin: 0 auto;
+    background: var(--bg-card);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-lg);
+    padding: 36px;
+    box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.6);
+}
+
+.form-header h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: clamp(24px, 3.5vw, 32px);
+    margin: 0 0 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    background: linear-gradient(90deg, var(--nintendo), var(--playstation) 50%, var(--xbox));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.form-header p {
+    margin: 0 0 28px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+}
+
+/* ---------- Grid de campos ---------- */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 16px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.campo-full {
+    grid-column: 1 / -1;
+}
+
+.campo label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+}
+
+.campo input {
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px;
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 11px 14px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.campo input:focus {
+    border-color: var(--pc);
+    box-shadow: 0 0 0 3px rgba(157, 78, 221, 0.18);
+}
+
+/* ---------- Plataforma: select con color dinámico por consola ---------- */
+.select-plataforma {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--text-secondary);
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-soft);
+    background-image: linear-gradient(45deg, transparent 50%, var(--text-secondary) 50%),
+        linear-gradient(135deg, var(--text-secondary) 50%, transparent 50%);
+    background-position: calc(100% - 20px) center, calc(100% - 14px) center;
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.select-plataforma option {
+    background: var(--bg-base);
+    color: var(--text-primary);
+}
+
+.select-plataforma.chip-nintendo {
+    color: var(--nintendo);
+    background-color: color-mix(in srgb, var(--nintendo) 15%, transparent);
+    border-color: color-mix(in srgb, var(--nintendo) 50%, transparent);
+    box-shadow: 0 0 14px color-mix(in srgb, var(--nintendo) 25%, transparent);
+}
+
+.select-plataforma.chip-playstation {
+    color: var(--playstation);
+    background-color: color-mix(in srgb, var(--playstation) 15%, transparent);
+    border-color: color-mix(in srgb, var(--playstation) 50%, transparent);
+    box-shadow: 0 0 14px color-mix(in srgb, var(--playstation) 25%, transparent);
+}
+
+.select-plataforma.chip-xbox {
+    color: var(--xbox);
+    background-color: color-mix(in srgb, var(--xbox) 15%, transparent);
+    border-color: color-mix(in srgb, var(--xbox) 50%, transparent);
+    box-shadow: 0 0 14px color-mix(in srgb, var(--xbox) 25%, transparent);
+}
+
+.select-plataforma.chip-pc {
+    color: var(--pc);
+    background-color: color-mix(in srgb, var(--pc) 15%, transparent);
+    border-color: color-mix(in srgb, var(--pc) 50%, transparent);
+    box-shadow: 0 0 14px color-mix(in srgb, var(--pc) 25%, transparent);
+}
+
+.select-plataforma:focus {
+    box-shadow: 0 0 0 3px rgba(157, 78, 221, 0.18);
+}
+
+/* ---------- Disponibilidad: toggle switch (mismos colores del badge de la tabla) ---------- */
+.disponible-campo {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+}
+
+.disponible-campo .campo-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.disponible-campo .campo-texto span:first-child {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.disponible-campo .campo-texto span:last-child {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.toggle {
+    position: relative;
+    width: 46px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+.toggle input {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.toggle-track {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 59, 92, 0.35);
+    border-radius: var(--radius-pill);
+    transition: background 0.2s ease;
+}
+
+.toggle-track::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    background: var(--text-primary);
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+}
+
+.toggle input:checked ~ .toggle-track {
+    background: #00FFA3;
+    box-shadow: 0 0 12px rgba(0, 255, 163, 0.4);
+}
+
+.toggle input:checked ~ .toggle-track::before {
+    transform: translateX(20px);
+}
+
+.toggle input:focus-visible ~ .toggle-track {
+    outline: 2px solid var(--pc);
+    outline-offset: 2px;
+}
+
+/* ---------- Acciones ---------- */
+.form-acciones {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.btn-guardar,
+.btn-cancelar {
+    flex: 1;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: var(--radius-pill);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn-guardar:active,
+.btn-cancelar:active {
+    transform: scale(0.98);
+}
+
+.btn-guardar {
+    color: var(--bg-base);
+    background: linear-gradient(90deg, var(--nintendo), var(--playstation) 50%, var(--xbox));
+}
+
+.btn-guardar:hover {
+    box-shadow: 0 0 20px rgba(157, 78, 221, 0.4);
+}
+
+.btn-cancelar {
+    color: var(--text-secondary);
+    background: transparent;
+    border-color: var(--border-soft);
+}
+
+.btn-cancelar:hover {
+    color: var(--text-primary);
+    border-color: #FF3B5C;
+}
+
+.btn-guardar:focus-visible,
+.btn-cancelar:focus-visible {
+    outline: 2px solid var(--pc);
+    outline-offset: 2px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+    .form-page {
+        padding: 28px 16px;
+    }
+
+    .form-card {
+        padding: 24px 18px;
+        border-radius: var(--radius-md);
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-acciones {
+        flex-direction: column;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .campo input,
+    .select-plataforma,
+    .toggle-track,
+    .toggle-track::before,
+    .btn-guardar,
+    .btn-cancelar {
+        transition: none;
+    }
+}

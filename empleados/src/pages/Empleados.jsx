@@ -1,13 +1,22 @@
 import './Empleados.css'
+import data from '../data/empleados'
+import { useState } from 'react'
+import { useAsyncValue, useNavigate } from 'react-router-dom'
 
 function Empleados({ empleados, onEliminar, onEditar }) {
-    const estadoClase = (estado) => {
-        const key = (estado || "").toLowerCase();
-        if (key.includes("activo") && !key.includes("inactivo")) return "estado-activo";
-        if (key.includes("inactivo")) return "estado-inactivo";
-        if (key.includes("vacacion")) return "estado-vacaciones";
-        return "estado-default";    
-    };
+
+    const navigate = useNavigate();
+
+    function manejarEditar(emp){
+        
+        navigate('/editar', {state: {empleado: emp}});
+    }
+
+    const textoEstado = (activo) => (activo ? "Activo" : "Inactivo")
+
+    const estadoClase = (activo) => {
+        return activo ? "estado-activo" : "estado-inactivo"
+    }
 
     return (
         <div className="empleados-page">
@@ -44,15 +53,16 @@ function Empleados({ empleados, onEliminar, onEditar }) {
                                     <td data-label="Ingreso" className="col-mono"><span className="valor">{emp.fechaIngreso}</span></td>
                                     <td data-label="Salario" className="col-mono col-salario"><span className="valor">{emp.salario}</span></td>
                                     <td data-label="Estado">
-                                        <span className={`estado-pill ${estadoClase(emp.estado)}`}>
-                                            {emp.estado}
+                                        <span className={`estado-pill ${estadoClase(emp.activo)}`}>
+                                            {textoEstado(emp.activo)}
                                         </span>
                                     </td>
                                     <td data-label="Acciones">
                                         <div className="acciones-group">
                                             <button
                                                 className="btn btn-editar"
-                                                onClick={() => onEditar(emp)}
+                                                onClick={() => manejarEditar(emp)}
+
                                             >
                                                 Editar
                                             </button>

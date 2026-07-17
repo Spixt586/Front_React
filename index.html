@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>fundamentos_react — proyectos</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d1117;
+    --panel: #11161d;
+    --line: #1f2630;
+    --text: #c9d1d9;
+    --dim: #6e7681;
+    --accent: #7ee787;
+    --accent-dim: rgba(126, 231, 135, 0.12);
+    --amber: #d9a441;
+  }
+
+  html, body {
+    height: 100%;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .window {
+    width: 100%;
+    max-width: 760px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px -30px rgba(0,0,0,0.6);
+  }
+
+  .titlebar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: #0a0e13;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .dot { width: 11px; height: 11px; border-radius: 50%; }
+  .dot.r { background: #ff5f57; }
+  .dot.y { background: #febc2e; }
+  .dot.g { background: #28c840; }
+
+  .path {
+    margin-left: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--dim);
+  }
+  .path b { color: var(--text); font-weight: 500; }
+
+  .prompt {
+    padding: 20px 24px 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: var(--dim);
+  }
+  .prompt .cmd { color: var(--accent); }
+  .prompt .cursor {
+    display: inline-block;
+    width: 8px; height: 15px;
+    background: var(--accent);
+    margin-left: 4px;
+    vertical-align: -2px;
+    animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  ul.list {
+    list-style: none;
+    padding: 8px 12px 20px;
+  }
+
+  li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--text);
+    transition: background 0.15s ease, transform 0.1s ease;
+  }
+
+  li a:hover {
+    background: var(--accent-dim);
+  }
+  li a:active { transform: scale(0.995); }
+
+  .icon {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--amber);
+    font-size: 15px;
+    width: 18px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14.5px;
+    font-weight: 500;
+  }
+
+  .tag {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--dim);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  li a:hover .tag { color: var(--accent); }
+
+  .footer {
+    padding: 10px 24px 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--dim);
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+  }
+</style>
+</head>
+<body>
+
+  <div class="window">
+    <div class="titlebar">
+      <span class="dot r"></span>
+      <span class="dot y"></span>
+      <span class="dot g"></span>
+      <span class="path">KrakeDev / Nivel1 / <b>fundamentos_react</b></span>
+    </div>
+
+    <div class="prompt">
+      <span class="cmd">$</span> ls proyectos/<span class="cursor"></span>
+    </div>
+
+    <ul class="list">
+      <li>
+        <a href="./empleados/index.html">
+          <span class="icon">▸</span>
+          <span class="name">empleados</span>
+          <span class="tag">React</span>
+        </a>
+      </li>
+      <li>
+        <a href="./Taller_Practico_React_Fundamentos_Taller1/index.html">
+          <span class="icon">▸</span>
+          <span class="name">Taller_Práctico_React_Fundamentos_Taller1</span>
+          <span class="tag">React</span>
+        </a>
+      </li>
+      <li>
+        <a href="./tareas/index.html">
+          <span class="icon">▸</span>
+          <span class="name">tareas</span>
+          <span class="tag">React</span>
+        </a>
+      </li>
+      <li>
+        <a href="./tienda-videojuegos/index.html">
+          <span class="icon">▸</span>
+          <span class="name">tienda-videojuegos</span>
+          <span class="tag">React</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="footer">4 proyectos · fundamentos_react</div>
+  </div>
+
+</body>
+</html>

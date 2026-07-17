@@ -1,0 +1,94 @@
+/* ---------- Navbar: hereda tokens de TablaVideoJuegos.css ---------- */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 24px;
+    background: rgba(11, 11, 18, 0.75);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.navbar-brand {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: clamp(18px, 2.2vw, 22px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: linear-gradient(90deg, var(--nintendo), var(--playstation) 50%, var(--xbox));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    white-space: nowrap;
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navbar-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: var(--radius-pill);
+    border: 1px solid transparent;
+    transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    white-space: nowrap;
+}
+
+.navbar-link:hover {
+    color: var(--text-primary);
+    background: var(--bg-card);
+    border-color: var(--border-soft);
+}
+
+.navbar-link:focus-visible {
+    outline: 2px solid var(--pc);
+    outline-offset: 2px;
+}
+
+/* Ruta activa: clase que React Router asigna vía NavLink */
+.navbar-link.active {
+    color: var(--bg-base);
+    background: linear-gradient(90deg, var(--nintendo), var(--playstation) 50%, var(--xbox));
+    border-color: transparent;
+    box-shadow: 0 0 16px rgba(157, 78, 221, 0.35);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 14px 16px;
+    }
+
+    .navbar-links {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .navbar-link {
+        flex: 1 1 auto;
+        text-align: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .navbar-link {
+        transition: none;
+    }
+}

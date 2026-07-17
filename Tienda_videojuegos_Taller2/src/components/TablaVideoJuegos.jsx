@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import './TablaVideoJuegos.css'
 
 function estiloJuego(id) {
@@ -22,7 +23,14 @@ function claseplataforma(plataforma) {
     return 'plataforma-pc';
 }
 
-function TablaVideoJuegos({ videoJuegos, onEliminar, onEditar }) {
+function TablaVideoJuegos({ videoJuegos, onEliminar}) {
+
+    const navigate = useNavigate();
+
+    function manejarEditar(vid){
+        navigate("/editar", {state: {videoJuego: vid}})
+    }
+
     return (
         <div className="store-page">
             <div className="aurora-blob aurora-blob--nintendo" aria-hidden="true"></div>
@@ -88,7 +96,7 @@ function TablaVideoJuegos({ videoJuegos, onEliminar, onEditar }) {
 
                                 <td className="acciones">
                                     <div className="acciones-group">
-                                        <button className="btn btn-editar" onClick={() => onEditar(vid)}>
+                                        <button className="btn btn-editar" onClick={() => manejarEditar(vid)}>
                                             Editar
                                         </button>
                                         <button className="btn btn-eliminar" onClick={() => onEliminar(vid.id)}>

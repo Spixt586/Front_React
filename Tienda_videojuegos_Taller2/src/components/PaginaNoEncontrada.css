@@ -1,0 +1,82 @@
+/* ---------- 404: hereda tokens de TablaVideoJuegos.css ---------- */
+
+.notfound-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: var(--bg-base);
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.notfound-content {
+    max-width: 480px;
+}
+
+.notfound-codigo {
+    margin: 0 0 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--text-secondary);
+}
+
+.notfound-titulo {
+    margin: 0 0 16px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: clamp(30px, 6vw, 48px);
+    line-height: 1.3;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    background: linear-gradient(90deg, var(--nintendo), var(--playstation) 50%, var(--xbox));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.notfound-texto {
+    margin: 0 0 32px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
+.notfound-boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 28px;
+    border-radius: var(--radius-pill);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--bg-base);
+    background: linear-gradient(90deg, var(--nintendo), var(--playstation) 50%, var(--xbox));
+    transition: box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.notfound-boton:hover {
+    box-shadow: 0 0 20px rgba(157, 78, 221, 0.4);
+}
+
+.notfound-boton:active {
+    transform: scale(0.97);
+}
+
+.notfound-boton:focus-visible {
+    outline: 2px solid var(--pc);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .notfound-boton {
+        transition: none;
+    }
+}

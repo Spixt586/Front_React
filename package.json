@@ -1,0 +1,7 @@
+{
+  "name": "fundamentos-react-menu",
+  "private": true,
+  "scripts": {
+    "build": "node build.js"
+  }
+}
