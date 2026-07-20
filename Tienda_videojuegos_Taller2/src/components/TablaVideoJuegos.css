@@ -239,6 +239,40 @@ html, body {
     text-align: right;
     margin-top: 12px;
 }
+/* ---------- Barra de metacritic ---------- */
+.calificacionMetacritic{
+    order: 7;
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.barra-metacritic{
+    flex: 1;
+    height: 8px;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: var(--radius-pill);
+    overflow: none;
+    border: none;
+}
+
+.barra-metacritic::-webkit-profress-bar{
+        background-color: rgba(255, 255, 255, 0.08);
+        border-radius: var(--radius-pill);
+}
+
+/* ---------- Barra de metacritic ---------- */
+.sinopsis {
+    order: 3;
+    width: 100%;
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
 
 .stock {
     display: inline-block;

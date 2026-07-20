@@ -23,12 +23,12 @@ function claseplataforma(plataforma) {
     return 'plataforma-pc';
 }
 
-function TablaVideoJuegos({ videoJuegos, onEliminar}) {
+function TablaVideoJuegos({ videoJuegos, onEliminar }) {
 
     const navigate = useNavigate();
 
-    function manejarEditar(vid){
-        navigate("/editar", {state: {videoJuego: vid}})
+    function manejarEditar(vid) {
+        navigate("/editar", { state: { videoJuego: vid } })
     }
 
     return (
@@ -53,6 +53,8 @@ function TablaVideoJuegos({ videoJuegos, onEliminar}) {
                             <th>Precio</th>
                             <th>Disponible</th>
                             <th>Progreso</th>
+                            <th>Sinopsis</th>
+                            <th>Metacritic</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -91,6 +93,22 @@ function TablaVideoJuegos({ videoJuegos, onEliminar}) {
                                     ></progress>
                                     <span className="progreso-texto">
                                         {Math.round(vid.progreso * 100)}%
+                                    </span>
+                                </td>
+
+                                <td className={`sinopsis ${estiloJuego(vid.id)}`}>
+                                    <span>{vid.sinopsis}</span>
+                                </td>
+
+                                <td className='calificacionMetacritic'>
+                                    <progress
+                                        value={vid.metacritic}
+                                        max="100"
+                                        min="1"
+                                        className='barra-metacritic'>
+                                    </progress>
+                                    <span className="progreso-texto">
+                                        {Math.round(vid.metacritic * 1)}%
                                     </span>
                                 </td>
 

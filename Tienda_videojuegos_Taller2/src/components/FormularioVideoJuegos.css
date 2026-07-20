@@ -88,6 +88,26 @@
     box-shadow: 0 0 0 3px rgba(157, 78, 221, 0.18);
 }
 
+.error-mensaje {
+    font-size: 12px;
+    font-weight: 500;
+    color: #FF3B5C;
+    margin-top: 2px;
+    animation: error-entrada 0.25s ease-out;
+}
+ 
+@keyframes error-entrada {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+ 
+@media (prefers-reduced-motion: reduce) {
+    .error-mensaje {
+        animation: none;
+    }
+}
+
+
 /* ---------- Plataforma: select con color dinámico por consola ---------- */
 .select-plataforma {
     appearance: none;

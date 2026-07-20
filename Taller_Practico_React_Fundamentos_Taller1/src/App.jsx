@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function Peliculas({titulo}){
+function Peliculas({titulo, añoDeEstreno}){
 
   const[favorita, setFavorita] = useState(false)
   return(
@@ -13,7 +13,9 @@ function Peliculas({titulo}){
                 onClick={() => setFavorita (!favorita)}
 
                 >
-      <p>{titulo}{favorita && "⭐"}</p>
+      <p>{titulo}{añoDeEstreno}{favorita && "⭐"}</p>
+      <button
+      onClick={() => console.log("Se seleccionó la película: " + titulo)}>Seleccionar</button>
     </div>
   );
 }
@@ -36,6 +38,7 @@ function App(){
   return(
     <div>
       <h1>Mis Películas Favoritas</h1>
+      <p>Mis películas registradas: {peliculas.length}</p>
       <div>
         <input type="text"
       value = {nuevaPelicula}
@@ -44,8 +47,8 @@ function App(){
 
       <button onClick={agregarPeliculas}>Agregar</button>
       </div>
-        {peliculas.map((pelicula, indice) => (
-          <Peliculas key={indice} titulo={pelicula}/>
+        {peliculas.map((pelicula, añoDeEstreno, indice) => (
+          <Peliculas key={indice} titulo={pelicula} añoDeEstreno={" 2025"}/>
         ))}
     </div>
   );

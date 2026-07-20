@@ -1,19 +1,19 @@
 import { NavLink } from "react-router-dom"
 import "./Navbar.css"
 
-function Navbar(){
-    return(
+function Navbar() {
+    return (
         <div className="navbar">
             <span className="navbar-brand">Gestor Video Juegos</span>
             <div className="navbar-links">
-                <NavLink 
+                <NavLink
                     to="/"
                     end
                     className={({ isActive }) => `navbar-link${isActive ? " active" : ""}`}
                 >
                     Video Juegos
                 </NavLink>
-                <NavLink 
+                <NavLink
                     to="/nuevo"
                     className={({ isActive }) => `navbar-link${isActive ? " active" : ""}`}
                 >
